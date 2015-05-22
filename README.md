@@ -54,7 +54,7 @@ Views Routes:
 API Routes
 
 |     action      |        resource     |      description          |
-| ----------------------------------------------------------       -|
+| ------------------------------------------------------------------|
 | GET             |   '/api/users'      | provides all information for a user (all information for all cards the user contributed to)|
 | POST            |   '/api/users'      | send a new user to the server|
 |                 |                     |                     |
