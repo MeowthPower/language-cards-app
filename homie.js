@@ -1,3 +1,4 @@
-console.log("Colby says hey")
+console.log("Colby says hey");
+console.log("Sup");
+console.log("WHEEEE how un.");
 
-console.log("WHEEEE how un.")
