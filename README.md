@@ -37,3 +37,5 @@ Our class is full of folks who speak a second language - let's take advantage of
 Database Structure
 
 ERD:
+
+![ERD](/img/LanguageAppERD.png)
