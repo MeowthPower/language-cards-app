@@ -45,7 +45,7 @@ ERD:
 Views Routes:
 
 |     action      |        resource     |      description          |
-| ----------------|---------------------|-------------------       -|
+| ----------------|---------------------|---------------------------|
 | GET             |   '/'            | index - view for main app|
 | GET             |   '/login'       | view with login form (to start a new session) or create user form  |
 | DELETE          |   '/login'       | sign out / destroy session |
