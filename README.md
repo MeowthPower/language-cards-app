@@ -45,7 +45,7 @@ ERD:
 Views Routes:
 
 |     action      |        resource     |      description          |
-| ----------------------------------------------------------       -|
+| ----------------|---------------------|-------------------       -|
 | GET             |   '/'            | index - view for main app|
 | GET             |   '/login'       | view with login form (to start a new session) or create user form  |
 | DELETE          |   '/login'       | sign out / destroy session |
@@ -77,4 +77,4 @@ API Routes
 |  |  |  |
 ||||
 | GET             |  '/api/categories'  |   provides list of all category tags in use|
-| GET             |  '/api/categories/:id'  |  provides all cards which have a given category tag|   
+| GET             |  '/api/categories/:id'  |  provides all cards which have a given category tag|
