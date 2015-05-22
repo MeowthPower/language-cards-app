@@ -38,4 +38,43 @@ Database Structure
 
 ERD:
 
-![ERD](/img/LanguageAppERD.png)
+<!-- ![ERD](/img/LanguageAppERD.png) -->
+
+
+
+Views Routes:
+
+|     action      |        resource     |      description          |
+| ----------------------------------------------------------       -|
+| GET             |   '/'            | index - view for main app|
+| GET             |   '/login'       | view with login form (to start a new session) or create user form  |
+| DELETE          |   '/login'       | sign out / destroy session |
+
+
+API Routes
+
+|     action      |        resource     |      description          |
+| ----------------------------------------------------------       -|
+| GET             |   '/api/users'      | provides all information for a user (all information for all cards the user contributed to)|
+| POST            |   '/api/users'      | send a new user to the server|
+|                 |                     |                     |
+| GET             |   '/api/users/favorites' | serves information for all cards the user selected as favorites |
+| POST            |   '/api/users/favorites' | user selects a card as a favorite |
+| DELETE          |   '/api/users/favorites' | user "drops" a card from favorites |
+|                 |                         |                   |
+| GET             |   '/api/users/translations' | serves information for all cards for which the user provided a translation |
+| POST            |   '/api/users/translations'  | sends a new translation for a card to the server |
+| PUT/PATCH       |   '/api/users/translations'  | sends a translation changed by the user to the server|
+| ??DELETE        |   '/api/users/translations'  | translation removed from a card |
+|                 |                              |           |
+||||
+| GET             | '/api/cards'    |    provides all information for all cards |
+| POST            | '/api/cards'     |  a new card with a phrase heading is sent to server|
+|  |  |  |
+| GET             | '/api/cards/:id' |  provides information for a specific card (show page)|
+| PUT/PATCH            | 'api/cards/:id' |  adds a category tag to a card |
+| *DELETE (admin only)|   '/api/cards/:id' | admin removes a card |
+|  |  |  |
+||||
+| GET             |  '/api/categories'  |   provides list of all category tags in use|
+| GET             |  '/api/categories/:id'  |  provides all cards which have a given category tag|   
