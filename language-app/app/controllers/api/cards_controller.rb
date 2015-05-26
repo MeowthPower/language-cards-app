@@ -1,7 +1,8 @@
-module API
+module Api
   class CardsController < ApplicationController
     def index
-      
+      allCards= Card.all()
+      render json: allCards
     end
 
     def show

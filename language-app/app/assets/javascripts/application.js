@@ -18,3 +18,9 @@
 //= require ./libraries/backbone
 //= require ./libraries/mustache
 
+//= require_tree ./backbone/models/
+//= require_tree ./backbone/collections/
+//= require_tree ./backbone/views/
+//= require_tree ./backbone/router/
+//= require ./backbone/app
+

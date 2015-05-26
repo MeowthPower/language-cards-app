@@ -4,6 +4,8 @@ Meowth.Views.CardView = Backbone.View.extend({
 
   template: $('[data-template="card-template"]').text(),
 
+  tagName: 'tr',
+
   render: function(){
     this.$el.html(Mustache.render(this.template, this.model.attributes));
     return this;
