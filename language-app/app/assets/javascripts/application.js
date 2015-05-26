@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+
+//= require ./libraries/underscore
+//= require ./libraries/backbone
+//= require ./libraries/mustache
+
