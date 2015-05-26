@@ -47,7 +47,8 @@ Views Routes:
 |     action      |        resource     |      description          |
 | ----------------|---------------------|---------------------------|
 | GET             |   '/'            | index - view for main app|
-| GET             |   '/login'       | view with login form (to start a new session) or create user form  |
+| GET             |   '/login/new'       | view with login form (to start a new session) or create user form  |
+| POST            |   '/login'        | add a new session |
 | DELETE          |   '/login'       | sign out / destroy session |
 
 
@@ -60,11 +61,11 @@ API Routes
 |                 |                     |                     |
 | GET             |   '/api/users/favorites' | serves information for all cards the user selected as favorites |
 | POST            |   '/api/users/favorites' | user selects a card as a favorite |
-| DELETE          |   '/api/users/favorites' | user "drops" a card from favorites |
+| DELETE          |   '/api/users/favorites/:id' | user "drops" a card from favorites |
 |                 |                         |                   |
 | GET             |   '/api/users/translations' | serves information for all cards for which the user provided a translation |
 | POST            |   '/api/users/translations'  | sends a new translation for a card to the server |
-| PUT/PATCH       |   '/api/users/translations'  | sends a translation changed by the user to the server|
+| PUT/PATCH       |   '/api/users/translations/:id'  | sends a translation changed by the user to the server|
 | ??DELETE        |   '/api/users/translations'  | translation removed from a card |
 |                 |                              |           |
 ||||
