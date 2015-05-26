@@ -1,23 +1,24 @@
-module API
+module Api
   class CardsController < ApplicationController
     def index
-      
-    end
-
-    def show
-      
-    end
-
-    def create
-      
-    end
-
-    def update
-      
-    end
-
-    def destroy
-      
-    end
+      allCards= Card.all()
+      render json: allCards.to_json(include: {:translations => {include: :users}})
   end
+
+  def show
+
+  end
+
+  def create
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+
+  end
+end
 end
