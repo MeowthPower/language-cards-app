@@ -1,4 +1,19 @@
+
 Rails.application.routes.draw do
+# View routes
+  root 'welcome#index'
+
+  resource :login, only: [:new, :create, :destroy]
+# API routes
+  namespace :api do
+    resource :users , only: [:create, :show] do
+      resources :favorites, except: [:new,:update, :edit, :show]
+      resources :translations, except: [:new, :edit, :show]
+    end
+    resources :cards, except: [:new, :edit]
+    resources :categories, only: [:index, :show]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
