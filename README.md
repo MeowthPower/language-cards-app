@@ -38,7 +38,7 @@ Database Structure
 
 ERD:
 
-<!-- ![ERD](/img/LanguageAppERD.png) -->
+![ERD](/img/LanguageAppERD.png)
 
 
 
