@@ -1,4 +1,4 @@
-module API
+module Api
   class CategoriesController < ApplicationController
     def index
       

@@ -3,12 +3,19 @@ module Api
     def index
       allCards= Card.all()
 
-      render json: allCards.to_json( include: {translations: { include: :user} } )
+      render json: allCards.to_json( include: 
+        {translations: 
+            { include: 
+                {user: 
+                    {only: [:username]}
+                }
+            } 
+        } )
   end
 
   def show
 
-    end
+  end
 
   def create
 

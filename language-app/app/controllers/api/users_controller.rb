@@ -1,4 +1,4 @@
-module API
+module Api
   class UsersController < ApplicationController
     def index
       
