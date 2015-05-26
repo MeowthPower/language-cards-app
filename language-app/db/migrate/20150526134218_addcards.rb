@@ -5,5 +5,6 @@ class Addcards < ActiveRecord::Migration
         t.string :explanation
 
         t.timestamps null: false
+      end
   end
 end
