@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 # View routes
   root 'welcome#index'
 
-  resource :login, only: [:new, :create, :destroy]
+  resource :login, only: [:index, :create, :destroy]
 # API routes
   namespace :api do
     resource :users , only: [:create, :show] do
