@@ -3,7 +3,7 @@ class AddTranslations < ActiveRecord::Migration
     create_table :tranlations do |t|
 
       t.string :translation
-      t.string :languaage
+      t.string :language
       t.string :phonetic
       t.string :meaning
 
