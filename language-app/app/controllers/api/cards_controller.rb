@@ -3,7 +3,7 @@ module Api
     def index
       allCards= Card.all()
 
-      render json: allCards.to_json(include: {:translations => {include: :users}})
+      render json: allCards.to_json( include: {translations: { include: :user} } )
   end
 
   def show
