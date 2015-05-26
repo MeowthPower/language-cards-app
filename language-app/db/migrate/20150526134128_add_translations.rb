@@ -1,6 +1,6 @@
 class AddTranslations < ActiveRecord::Migration
   def change
-    create_table :tranlations do |t|
+    create_table :translations do |t|
 
       t.string :translation
       t.string :language
