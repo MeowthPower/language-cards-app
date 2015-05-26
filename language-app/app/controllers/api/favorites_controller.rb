@@ -1,4 +1,4 @@
-module API
+module Api
   class FavoritesController < ApplicationController
     def index
       
