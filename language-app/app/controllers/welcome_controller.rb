@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    render :test
+    render :index
   end
 end

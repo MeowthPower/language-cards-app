@@ -1,71 +1,50 @@
-<!-- <div class="ui floating sidebar active"> -->
-  <div id= "m_btn" class="ui pointing menu inverted fluid three item">
-    <div class="ui labeled icon button black">
-     <i class="fa fa-list fa-lg"></i>
-     Menu
-    </div>
+<div id= "m_btn" class="ui pointing menu inverted fluid three item">
+  <div class="ui labeled icon button black">
+   <i class="fa fa-list fa-lg"></i>
+   Menu
   </div>
-<!-- </div> -->
-
-
-  <div id="banner">
-    <h2 class="ui center aligned icon header">
-  <i class="circular fa fa-globe fa-5x"></i><br />
-  TranslateMe
-</h2>
-  </div>
-
-
+</div>
+<div id="banner">
+  <h2 class="ui center aligned icon header">
+    <i class="circular fa fa-globe fa-5x"></i><br />
+    TranslateMe
+  </h2>
+</div>
 <div id="table-option">
-  <div id= "option" class="ui pointing menu fluid four item">
-    <div class="active green item">
-      <i class="fa fa-sort fa-lg"></i> SORT BY
-    </div>
-    <a href="/" class="item">
-      <i class="fa fa-language fa-lg"></i> Translate 
+  <div id= "option" class="ui menu fluid two item">
+    <a href="#recents" class="item">
+      <i class="fa fa-sort fa-lg"></i> Recents
     </a>
-    <a class="item">
+    <a href="#categories" class="item">
       <i class="fa fa-calendar-o fa-lg"></i>  Categories
-    </a>
-    <a class="item">
-      <i class="fa fa-tag fa-lg"></i>  Recent
     </a>
   </div>
 </div>
-
 <div id="card_table">
-<table class="ui table segment three column">
-  <thead>
-    <tr>
-      <th>Translate</th>
-      <th>Categories</th>
-      <th>Recent</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>John</td>
-      <td>Approved</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <td>Jamie</td>
-      <td>Approved</td>
-      <td>Requires call</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Denied</td>
-      <td>None</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th colspan="3">
-        <div class="ui green button"><i class="fa fa-user fa-"></i>Add Card</div>
-      </th>
-    </tr>
-  </tfoot>
-</table>
+  <table class="ui table segment two column">
+    <thead>
+      <tr>
+        <th>English Phrase</th>
+        <th>Explanation</th>
+      </tr>
+    </thead>
+    <tbody>
+        <script type="text/template" data-template="card-template">
+          <td>{{english_phrase}}</td>
+          <td><a href="{{id}}">{{explanation}}</a></td>
+        </script>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="3">
+          <a href="#addcard">
+            <div class="ui green button"><i class="fa fa-user fa-">
+              </i>Add Card
+            </div>
+          </a>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
 </div>
 
