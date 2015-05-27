@@ -1,7 +1,7 @@
 module Api
   class CardsController < ApplicationController
     def index
-      all_cards= Card.all()
+      all_cards= Card.all().sort_by { |card| card.updated_at }
       render json: all_cards.to_json( include: 
         {translations: 
           { include: 
