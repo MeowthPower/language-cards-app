@@ -1,6 +1,7 @@
 module Api
   class FavoritesController < ApplicationController
     def index
+      # Possibly restructure with a Card search rather than a favorites search
       favorites = Favorite.where user_id: current_user[:id]
       render json: favorites.to_json( include:{ 
         card:{
