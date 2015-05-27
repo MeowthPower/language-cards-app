@@ -10,8 +10,9 @@ Rails.application.routes.draw do
       resources :favorites, except: [:new,:update, :edit, :show]
       resources :translations, except: [:new, :edit, :show]
     end
-    resources :cards, except: [:new, :edit]
+    resources :cards, except: [:new, :update, :edit]
     resources :categories, only: [:index, :show]
+    resources :tags, only: [:create, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
