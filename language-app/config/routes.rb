@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 # View routes
   root 'welcome#index'
 
+  resources :users, only: [:new, :create]
+
   resource :login, only: [:new, :create, :destroy]
 # API routes
   namespace :api do
-    resource :users , only: [:create, :show] do
+    resource :users , only: [:show] do
       resources :favorites, except: [:new,:update, :edit, :show]
       resources :translations, except: [:new, :edit, :show]
     end
