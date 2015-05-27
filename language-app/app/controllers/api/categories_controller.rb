@@ -6,8 +6,25 @@ module Api
     end
 
     def show
-      category = Card.find(params[:id])
-      render json: category
+      category = Category.find(params[:id])
+
+      # render all cards under current category
+        #cards will include favorites(boolean on client side)
+
+      render json: category.to_json(include: {
+        cards: {
+          only: [:english_phrase, :explanation],
+          include: {
+            translations: {
+              include:{
+                user:{
+                  only: [:username]
+                }
+              }
+            } 
+          }
+        }
+      })
     end
   end
 end

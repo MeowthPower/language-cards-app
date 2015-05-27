@@ -1,28 +1,20 @@
 module Api
   class FavoritesController < ApplicationController
     def index
-      # Possibly restructure with a Card search rather than a favorites search
-      favorites = Favorite.where user_id: current_user[:id]
-      render json: favorites.to_json( include:{ 
-        card:{
-          include:{
-            translations:{
-              include:{
-                user:{
-                  only: [:username]
-                }
-              }
-            },
-            categories:{
-             only:[:category_name]
+      # renders all card that meet our parameters
+      favorites = Card.joins(:favorites).where(favorites: {user_id: current_user[:id]})
+      render json: favorites.to_json( include: {
+        categories: {only: [:category_name]},
+        translations: {
+            include: {
+              user: {only: [:username]},
             }
-          }
-        }
-      })
+          } 
+        })
     end
 
     def create
-      new_favorite = Favorite.new(params[:favorite])
+      new_favorite = Favorite.new(favorite_params)
       new_favorite.save
       render json: new_favorite.to_json
     end
@@ -30,8 +22,13 @@ module Api
     def destroy
       favorite = Favorite.find(params[:id])
       favorite.destroy
-      # need to figure out what to render
       render json: favorite.to_json
     end
+
+    private
+      def favorite_params
+        params.require(:favorite).permit(:user_id, :card_id)
+      end
+
   end
 end
