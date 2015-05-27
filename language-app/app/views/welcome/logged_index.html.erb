@@ -32,11 +32,7 @@
         <script type="text/template" data-template="card-template">
           <td>{{english_phrase}}</td>
           <td><a href="#{{id}}">{{explanation}}</a></td>
-        </script>
-
-        <script type="text/template" data-template="category-template">
-          <td><a href="#{{id}}">{{category_name}}</a></td>
-          <td>woof</td>
+          <td>{{updated_at}}</td>
         </script>
 
     </tbody>
@@ -83,6 +79,7 @@
     </div>
   </div>
 </script>
+
 <script type="text/template" data-template="new-card-error">
   <div class="ui error message">
     <p>You tried to create a card with a phrase that already exists!</p>

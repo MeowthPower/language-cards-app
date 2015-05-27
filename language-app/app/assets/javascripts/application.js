@@ -17,6 +17,7 @@
 //= require ./libraries/underscore
 //= require ./libraries/backbone
 //= require ./libraries/mustache
+//= require ./libraries/moment
 
 //= require ./semantic
 
