@@ -3,7 +3,8 @@ var Meowth = Meowth || { Models: {}, Collections: {}, Views: {}, Routers: {} };
 Meowth.Routers.AppRouter = Backbone.Router.extend({
   routes :{
     '': 'index',
-    'addcard': 'addCard'
+    'addcard': 'addCard',
+    'cards/:id': 'cardShow'
   },
 
   index: function(){
@@ -15,9 +16,11 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     
   },
 
-  addCard: function(){
-    // instantiate new view
-    // renders view template
-    // newCard.render()
+  cardShow: function(id) {
+    var cardModel = new Meowth.Models.Card({id:id})
+    var card = new Meowth.Views.CardShow({model: cardModel});
+    card.render()
+    cardModel.fetch()
   }
+
 })

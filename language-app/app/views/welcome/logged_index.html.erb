@@ -32,7 +32,7 @@
     <tbody>
         <script type="text/template" data-template="card-template">
           <td>{{english_phrase}}</td>
-          <td><a href="#{{id}}">{{explanation}}</a></td>
+          <td><a href="#/cards/{{id}}">{{explanation}}</a></td>
         </script>
     </tbody>
     <tfoot>
@@ -83,3 +83,36 @@
     <p>You tried to create a card with a phrase that already exists!</p>
   </div>
 </script>
+
+<script type="text/template" data-template="card-show-template">
+    <a href="#"<i class="fa fa-times fa-2x"></i></a>
+    <div class="header">
+    Card View
+    </div>
+      <div class="content">
+        <div class="ui piled segment">
+          <div class="description">
+            
+              <h1 class="ui header centered">{{english_phrase}}</h1>
+              <h2 class="ui header centered">{{explanation}}</h2>
+                <p>Explanation: {{explanation}}</p>
+                {{#translations}}
+                  <p>Translation: {{translation}}</p>
+                  <p>Language: {{language}}</p>
+                  <p>Phonetic: {{phonetic}}</p>
+                {{/translations}}
+                {{#categories}}
+                <p>Categories: {{category_name}}</p>
+                {{/categories}}
+              
+          </div>
+        </div>
+      </div>
+    <div class="actions">
+      <div class="ui positive right labeled button">
+        Translate
+      </div>
+    </div>
+
+</script>
+

@@ -46,6 +46,12 @@ body {
   margin: 0 auto;
 }
 
+.fa-times {
+  float: right;
+  color: black;
+  margin-top: 15px;
+}
+
 #login {
   /*margin: 40px 40px 40px 40px;*/
   width: 800px;
