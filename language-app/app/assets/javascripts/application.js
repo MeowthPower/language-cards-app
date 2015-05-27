@@ -18,6 +18,8 @@
 //= require ./libraries/backbone
 //= require ./libraries/mustache
 
+//= require ./semantic
+
 //= require_tree ./backbone/models/
 //= require_tree ./backbone/collections/
 //= require_tree ./backbone/views/
