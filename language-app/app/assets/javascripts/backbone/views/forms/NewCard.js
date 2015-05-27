@@ -12,6 +12,7 @@ Meowth.Views.NewCard = Backbone.View.extend({
 
   render: function(){
     // fetches new card form
+    this.$el.empty()
     this.$el.html(this.template)
     // semantic logic to show modal
     this.$el.modal('setting', 'closable', false)
