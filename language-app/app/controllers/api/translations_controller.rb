@@ -1,24 +1,19 @@
 module Api
   class TranslationsController < ApplicationController
     def index
-      all_user_translations = Translation.where(user_id: current_user[:id])
-        
-      render json: all_user_translations.to_json( include:
-        {card:
+      all_user_translations = Card.joins(:translations).where(translations: {user_id: current_user[:id]})
+
+      render json: all_user_translations.to_json(
           {include:
             {translations:
               {include:
                 {user:
                   {only: [:username]}
                 }
-              }
-            
+              }            
             }
-          } 
-
-
         })  
-    end
+    end 
 
     def create
       new_translation = Translation.new
@@ -53,6 +48,5 @@ module Api
       dropped_translation.destroy
       render json: dropped_translation.to_json
     end
-    
   end
 end
