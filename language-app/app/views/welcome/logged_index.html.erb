@@ -24,10 +24,8 @@
 <div id="card_table">
   <table class="ui table segment two column">
     <thead>
-      <tr>
-        <th>English Phrase</th>
-        <th>Explanation</th>
-      </tr>
+        <tr data-id="table-header">
+        </tr>
     </thead>
     <tbody>
   
@@ -90,3 +88,8 @@
     <p>You tried to create a card with a phrase that already exists!</p>
   </div>
 </script>
+
+
+<script type="text/template" data-template="category-template">
+  <td><a href="#{{id}}">{{category_name}}</a></td>
+</script> 
