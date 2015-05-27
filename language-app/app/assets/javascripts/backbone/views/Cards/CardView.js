@@ -7,7 +7,12 @@ Meowth.Views.CardView = Backbone.View.extend({
   tagName: 'tr',
 
   render: function(){
-    this.$el.html(Mustache.render(this.template, this.model.attributes));
+    renderObj = {}
+    renderObj.english_phrase = this.model.attributes.english_phrase
+    renderObj.explanation = this.model.attributes.explanation
+    renderObj.updated_at = moment(this.model.attributes.updated_at).from(moment()) 
+
+    this.$el.html(Mustache.render(this.template, renderObj));
     return this;
   }
 })

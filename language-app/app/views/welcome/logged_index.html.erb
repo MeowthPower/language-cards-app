@@ -1,3 +1,4 @@
+
 <div id= "m_btn" class="ui pointing menu inverted fluid three item">
   <div class="ui labeled icon button black">
    <i class="fa fa-list fa-lg"></i>
@@ -24,16 +25,17 @@
 <div id="card_table">
   <table class="ui table segment two column">
     <thead>
-      <tr>
-        <th>English Phrase</th>
-        <th>Explanation</th>
-      </tr>
+        <tr data-id="table-header">
+        </tr>
     </thead>
     <tbody>
+  
         <script type="text/template" data-template="card-template">
           <td>{{english_phrase}}</td>
           <td><a href="#/cards/{{id}}">{{explanation}}</a></td>
+          <td>{{updated_at}}</td>
         </script>
+
     </tbody>
     <tfoot>
       <tr>
@@ -78,6 +80,7 @@
     </div>
   </div>
 </script>
+
 <script type="text/template" data-template="new-card-error">
   <div class="ui error message">
     <p>You tried to create a card with a phrase that already exists!</p>
@@ -116,3 +119,6 @@
 
 </script>
 
+<script type="text/template" data-template="category-template">
+  <td><a href="#{{id}}">{{category_name}}</a></td>
+</script> 
