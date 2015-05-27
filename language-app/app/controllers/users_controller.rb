@@ -3,13 +3,14 @@ class UsersController < ApplicationController
 
   end
 
+
   def create
     user = User.new(user_params)
     if params[:checkbox] == "on"
       if user.save
         redirect_to ("/login/new")
       else
-        @message = "Please supply username and password"
+        @message = user.errors.full_messages[0]
         render :new
       end
     else
