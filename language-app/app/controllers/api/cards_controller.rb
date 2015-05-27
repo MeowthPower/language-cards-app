@@ -2,11 +2,11 @@ module Api
   class CardsController < ApplicationController
     def index
       all_cards= Card.all().sort_by { |card| card.updated_at }
-      render json: all_cards.to_json( include: 
-        {translations: 
-          { include: 
-            {user: 
-              {only: [:username]}
+      render json: all_cards.to_json( include: {
+        categories: {only: [:category_name]},
+        translations: {
+            include: {
+              user: {only: [:username]},
             }
           } 
         })
@@ -27,10 +27,17 @@ module Api
     end
 
     def create
-      new_card = Card.new
-      new_card.english_phrase = params[:english_phrase]
-      new_card.explanation = params[:explanation]
+
+      # get params for the new card, persist to DB
+      new_card = Card.new(card_params)
       new_card.save
+
+      # get params for the new category, check if it's in the DB already
+        # If it's already in the DB, just get the ID from it
+        # Otherwise, add it in and get its ID
+
+      # Create a new 'tag' relationship between the card and the category(ies?)
+
       render json: new_card.to_json
     end
 
@@ -40,5 +47,10 @@ module Api
       card_no_longer.destroy
       render json: card_no_longer.to_json
     end 
+
+    private
+      def card_params
+        params.require(:card).permit(:english_phrase, :explanation)
+      end
   end
 end
