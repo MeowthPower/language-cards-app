@@ -29,8 +29,10 @@ Meowth.Views.NewCard = Backbone.View.extend({
       })
       this.$el.remove()
     } else {
-      this.render();
-      this.$el.prepend($('[data-template="new-card-error"').text());
+      this.$el.remove()
+      var newCard = new Meowth.Views.NewCard({collection: this.collection});
+      newCard.render();
+      newCard.$el.prepend($('[data-template="new-card-error"').text());
     }
   }
 
