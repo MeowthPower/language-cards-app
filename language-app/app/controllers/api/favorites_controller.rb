@@ -1,7 +1,7 @@
 module Api
   class FavoritesController < ApplicationController
     def index
-      favorites = Favorite.find_by user_id: current_user[:id]
+      favorites = Favorite.where user_id: current_user[:id]
       render json: favorites.to_json( include:{ 
         card:{
           include:{
