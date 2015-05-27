@@ -15,6 +15,7 @@ module Api
     def show
       card = Card.find(params[:id])
       render json: card.to_json( include:{
+        categories: {only: [:category_name]},
         translations:{
           include:{
             user:{only: [:username]}

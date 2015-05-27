@@ -3,7 +3,8 @@ var Meowth = Meowth || { Models: {}, Collections: {}, Views: {}, Routers: {} };
 Meowth.Views.NewCard = Backbone.View.extend({
 
   events : {
-    'click .positive.right': 'submitNewCard'
+    'click .positive.right': 'submitNewCard',
+    'click .negative': 'cancel'
   },
 
   className:"ui modal",
@@ -21,6 +22,8 @@ Meowth.Views.NewCard = Backbone.View.extend({
 
   submitNewCard: function(){
     var englishPhrase = $('[name="english_phrase"]').val()
+    console.log(this)
+    // debugger
     var phrases = this.collection.pluck('english_phrase');
     if (phrases.indexOf(englishPhrase) === -1){
       this.collection.create({
@@ -35,6 +38,9 @@ Meowth.Views.NewCard = Backbone.View.extend({
       newCard.render();
       newCard.$el.prepend($('[data-template="new-card-error"').text());
     }
+  },
+  cancel: function () {
+    this.$el.remove()
   }
 
 })

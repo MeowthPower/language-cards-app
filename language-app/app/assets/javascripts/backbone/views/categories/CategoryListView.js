@@ -3,7 +3,6 @@ var Meowth = Meowth || { Models: {}, Collections: {}, Views: {}, Routers: {} };
 Meowth.Views.CategoryListView = Backbone.View.extend({
   initialize: function(){ 
     this.listenTo(this.collection, 'add', this.addCategory)
-    this.collection.fetch()
   },
 
   addCategory: function(category){
