@@ -2,9 +2,6 @@ module Api
   class TranslationsController < ApplicationController
     def index
       all_user_translations = Card.joins(:translations).where(translations: {user_id: current_user[:id]})
-      # Author.joins(:articles).where(articles: { author: author })
-        
-        # Restructure so we don't get translation info twice - how should we render these?
 
       render json: all_user_translations.to_json(
           {include:
@@ -13,7 +10,7 @@ module Api
                 {user:
                   {only: [:username]}
                 }
-              }            
+              }
             }
         })  
     end
