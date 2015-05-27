@@ -13,11 +13,10 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     // add table headers
     var tableHeaders = "<th>English Phrase</th><th>Explanation</th><th>Last Modifried</th>"
     $('[data-id="table-header"]').html(tableHeaders)
-    // instantiate new recents collection
-    var recentCollection = new Meowth.Collections.RecentCards();
-    // instantiate new collectionView
+    var recentCollection = recentCollection || new Meowth.Collections.RecentCards();
+
     var cardListView = new Meowth.Views.CardListView({collection: recentCollection, el: $('tbody')});
-    new Meowth.Views.AddCard({collection: recentCollection});
+    cardListView.collection.fetch()  
   },
 
   viewCategories: function(){
@@ -26,10 +25,9 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     // add table headers
     var tableHeaders = "<th>Category</th>"
     $('[data-id="table-header"]').html(tableHeaders)
-    // instantiate new categories collection
-    var allCategories = new Meowth.Collections.AllCategories();
-    // append categories into table body
+    var allCategories = allCategories || new Meowth.Collections.AllCategories();
     var categoryListView = new Meowth.Views.CategoryListView({collection: allCategories, el: $('tbody')});
 
+    categoryListView.collection.fetch()
   }
 })
