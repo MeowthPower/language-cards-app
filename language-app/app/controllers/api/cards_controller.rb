@@ -14,14 +14,15 @@ module Api
 
     def show
       card = Card.find(params[:id])
-      render json: card.to_json( include:
-        {translations:
-          {include:
-            {user:
-              {only: [:username]}
+      render json: card.to_json( include:{
+        translations:{
+          include:{
+            user:{
+              only: [:username]
             }
           }
-        })
+        }
+      })
 
     end
 

@@ -20,11 +20,17 @@
   </a>
 
   <div class="right menu">
-    <a href="/login/new" class="ui item">
-      Login
-    </a>
-    <div class="item"></div> 
-    <div class="item"></div> 
+  <% if @current_user %>
+    <form action="/login" method="POST">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <input name="_method" type="hidden" value="delete" />
+      <input type="submit" class="ui item" value="Log Out">
+    </form>
+    <% else %>
+      <a href="/login/new" class="ui item">
+        Login
+      </a>
+    <% end %>
   </div>
 </div>
 
