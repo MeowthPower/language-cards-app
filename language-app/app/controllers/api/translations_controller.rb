@@ -10,10 +10,10 @@ module Api
                 {user:
                   {only: [:username]}
                 }
-              }
+              }            
             }
         })  
-    end
+    end 
 
     def create
       new_translation = Translation.new
@@ -48,6 +48,5 @@ module Api
       dropped_translation.destroy
       render json: dropped_translation.to_json
     end
-    
   end
 end
