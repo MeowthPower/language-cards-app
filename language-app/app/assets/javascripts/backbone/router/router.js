@@ -11,12 +11,13 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     var recentCollection = new Meowth.Collections.RecentCards();
     // instantiate new collectionView
     var cardListView = new Meowth.Views.CardListView({collection: recentCollection, el: $('tbody')});
+    new Meowth.Views.AddCard({collection: recentCollection});
+    
   },
 
   addCard: function(){
     // instantiate new view
-    var newCard = new Meowth.Views.NewCard()
     // renders view template
-    newCard.render()
+    // newCard.render()
   }
 })
