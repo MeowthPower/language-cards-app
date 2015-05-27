@@ -3,7 +3,7 @@ var Meowth = Meowth || { Models: {}, Collections: {}, Views: {}, Routers: {} };
 Meowth.Routers.AppRouter = Backbone.Router.extend({
   routes :{
     '': 'index',
-    'cards/:id': 'cardShow'
+    'cards/:id': 'cardShow',
     'categories' : 'viewCategories',
     'recents': 'index'
   },
@@ -26,7 +26,7 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     card.render()
     cardModel.fetch()
   },
-  
+
   viewCategories: function(){
     // clear table body to render new info
     $('tbody').empty()
