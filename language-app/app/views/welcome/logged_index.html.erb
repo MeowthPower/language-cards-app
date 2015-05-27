@@ -38,11 +38,9 @@
     <tfoot>
       <tr>
         <th colspan="3">
-          <a href="#addcard">
-            <div class="ui green button"><i class="fa fa-user fa-">
-              </i>Add Card
-            </div>
-          </a>
+          <div class="ui green button" data-action="new-card-form"><i class="fa fa-user fa-">
+            </i>Add Card
+          </div>
         </th>
       </tr>
     </tfoot>
@@ -62,11 +60,11 @@
       </div>
       <div class="ui required field">
         <label>Description</label>
-        <input type="text" name="description"> 
+        <input type="text" name="explanation"> 
       </div>
       <div class="ui field">
         <label>Tags</label>
-        <input type="text" name="description"> 
+        <input type="text" name="tags"> 
       </div>
     </form>
   </div>
@@ -78,5 +76,10 @@
       Add Card
       <i class="checkmark icon"></i>
     </div>
+  </div>
+</script>
+<script type="text/template" data-template="new-card-error">
+  <div class="ui error message">
+    <p>You tried to create a card with a phrase that already exists!</p>
   </div>
 </script>
