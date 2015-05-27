@@ -19,12 +19,21 @@ Meowth.Views.NewCard = Backbone.View.extend({
   },
 
   submitNewCard: function(){
-    this.collection.create({
-      english_phrase: $('[name="english_phrase"]').val(),
-      explanation: $('[name="explanation"]').val(),
-      category_name: $('[name="description"]').val()      
-    })
-    this.$el.remove()
+    var englishPhrase = $('[name="english_phrase"]').val()
+    var phrases = this.collection.pluck('english_phrase');
+    if (phrases.indexOf(englishPhrase) === -1){
+      this.collection.create({
+        english_phrase: $('[name="english_phrase"]').val(),
+        explanation: $('[name="explanation"]').val(),
+        category_name: $('[name="categories"]').val()      
+      })
+      this.$el.remove()
+    } else {
+      this.$el.remove()
+      var newCard = new Meowth.Views.NewCard({collection: this.collection});
+      newCard.render();
+      newCard.$el.prepend($('[data-template="new-card-error"').text());
+    }
   }
 
 })

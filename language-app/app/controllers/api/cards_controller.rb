@@ -17,9 +17,7 @@ module Api
       render json: card.to_json( include:{
         translations:{
           include:{
-            user:{
-              only: [:username]
-            }
+            user:{only: [:username]}
           }
         }
       })
@@ -32,20 +30,41 @@ module Api
       new_card = Card.new(card_params)
       new_card.save
 
-      category = Category.find_by(category_name: params[:category_name])
+# start loopin'
 
-      if category
-        puts 'category found yo'
-      else
-        # save that cat
+        categories = params[:category_name].split(",")
+        puts categories
+
+        categories.each do |cat|
+          cat_fixed = cat.strip.gsub(/ /, '_').gsub(/\W/, "")
+          category = Category.find_by(category_name: cat_fixed)
         
-        puts 'no cat found yo'
-      end
-      # get params for the new category, check if it's in the DB already
-        # If it's already in the DB, just get the ID from it
-        # Otherwise, add it in and get its ID
 
-      # Create a new 'tag' relationship between the card and the category(ies?)
+          # get params for the new category, check if it's in the DB already
+          if category
+            # If it's already in the DB, just get the ID from it
+            cat_id = category.id
+            puts 'shiny cat found yo'
+          else
+            # Otherwise, add it in and get its ID
+            new_category = Category.new(category_name: cat_fixed)
+
+            new_category.save
+            cat_id = new_category.id
+
+            puts 'shiny cat birthd yo'
+          end
+          puts "shiny cat id is #{cat_id} yo"
+          # Create a new 'tag' relationship between the card and the category(ies?)
+          new_tag = Tag.new(card_id: new_card.id, category_id: cat_id)
+
+          new_tag.save
+          
+          puts new_tag.card.english_phrase
+          puts new_tag.category.category_name
+
+        end
+# end loopin' YO
 
       render json: new_card.to_json
     end
