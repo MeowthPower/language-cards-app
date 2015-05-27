@@ -21,8 +21,10 @@ Meowth.Views.NewCard = Backbone.View.extend({
   submitNewCard: function(){
     this.collection.create({
       english_phrase: $('[name="english_phrase"]').val(),
-      explanation: $('[name="explanation"]').val()      
+      explanation: $('[name="explanation"]').val(),
+      category_name: $('[name="description"]').val()      
     })
+    this.$el.remove()
   }
 
 })
