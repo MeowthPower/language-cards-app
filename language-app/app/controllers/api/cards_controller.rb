@@ -32,6 +32,15 @@ module Api
       new_card = Card.new(card_params)
       new_card.save
 
+      category = Category.find_by(category_name: params[:category_name])
+
+      if category
+        puts 'category found yo'
+      else
+        # save that cat
+        
+        puts 'no cat found yo'
+      end
       # get params for the new category, check if it's in the DB already
         # If it's already in the DB, just get the ID from it
         # Otherwise, add it in and get its ID
@@ -50,7 +59,8 @@ module Api
 
     private
       def card_params
-        params.require(:card).permit(:english_phrase, :explanation)
+        params.require(:card).permit(:english_phrase, :explanation, :category_name)
       end
+
   end
 end

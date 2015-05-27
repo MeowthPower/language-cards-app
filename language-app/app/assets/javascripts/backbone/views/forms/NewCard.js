@@ -23,15 +23,15 @@ Meowth.Views.NewCard = Backbone.View.extend({
     var phrases = this.collection.pluck('english_phrase');
     if (phrases.indexOf(englishPhrase) == -1){
       this.collection.create({
-        english_phrase: englishPhrase,
+        english_phrase: $('[name="english_phrase"]').val(),
         explanation: $('[name="explanation"]').val(),
-        tags: $('[name="tags"]').val()
+        category_name: $('[name="description"]').val()      
       })
+      this.$el.remove()
     } else {
       this.render();
       this.$el.prepend($('[data-template="new-card-error"').text());
     }
-
   }
 
 })
