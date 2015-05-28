@@ -46,6 +46,11 @@ body {
   margin: 0 auto;
 }
 
+#padded-content {
+  /*border: 2px solid black;*/
+  padding: 10px;
+}
+
 .fa-times {
   float: right;
   color: black;
