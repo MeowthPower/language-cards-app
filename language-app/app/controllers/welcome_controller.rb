@@ -3,8 +3,8 @@ class WelcomeController < ApplicationController
     if current_user
 
   # testing out user contributions
-      # render :logged_index
-      render :phil_test
+      render :logged_index
+      # render :phil_test
     else
       render :index
     end
