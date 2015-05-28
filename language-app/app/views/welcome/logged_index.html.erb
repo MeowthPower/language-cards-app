@@ -7,7 +7,7 @@
 <div id="banner">
   <h2 class="ui center aligned icon header">
     <i class="circular fa fa-globe fa-5x"></i><br />
-    TranslateMe
+    <p class="title">TranslateMe</p>
   </h2>
   <h3 class="ui center aligned header">Welcome, <%= @current_user.username %>! You're looking quite sharp today.</h3>
 </div>
@@ -157,29 +157,29 @@
 </script>
 
 <script type="text/template" data-template="translation-template">
-
-  <div class="four column row">
-    <h5>Language: {{language}}</h5>
-  </div>
-  <div class="four column centered row">
-    <div class="one column">
-      <p>Translation: {{translation}}</p>
+  <div id="padded-content" class="ui padded grid four wide column">
+    <div class="four column row">
+      <h5>Language: {{language}}</h5>
     </div>
-    <div class="one column">
-      <p>Phonetic: {{phonetic}}</p>
+    <div class="four column centered row">
+      <div class="one column">
+        <p>Translation: {{translation}}</p>
+      </div>
+      <div class="one column">
+        <p>Phonetic: {{phonetic}}</p>
+      </div>
+    </div>
+    <div class="four column centered row">
+      <h2>Meaning: {{meaning}}</h2>
+    </div>
+    <div class="row">
+      <div class="one right aligned column">
+        {{#user}}
+        <p><i class="fa fa-user fa-lg"></i>{{username}}</p>
+        {{/user}}
+      </div>
     </div>
   </div>
-  <div class="four column centered row">
-    <h2>Meaning: {{meaning}}</h2>
-  </div>
-  <div class="row">
-    <div class="one right aligned column">
-      {{#user}}
-      <p><i class="fa fa-user fa-lg"></i>{{username}}</p>
-      {{/user}}
-    </div>
-  </div>
-
   <div class="ui divider"></div>
 
 </script>
