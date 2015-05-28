@@ -9,7 +9,6 @@ Meowth.Views.CategoryView = Backbone.View.extend({
   render: function(){
     var renderedCategory = Mustache.render(this.template, this.model.attributes)
     this.$el.html(renderedCategory)
-    console.log(this.model.attributes)
     return this
   }
 })

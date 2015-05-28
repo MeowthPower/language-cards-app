@@ -9,6 +9,5 @@ Meowth.Views.CategoryListView = Backbone.View.extend({
     var categoryView = new Meowth.Views.CategoryView({model: category});
     categoryView.render()
     this.$el.append(categoryView.$el)
-    console.log(this.$el)
   }
 })
