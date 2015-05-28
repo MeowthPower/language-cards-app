@@ -95,26 +95,42 @@
       <div class="content">
         <div class="ui piled segment">
           <div class="description">  
-              <h1 class="ui header centered">{{english_phrase}}</h1>
-              <h2 class="ui header centered">{{explanation}}</h2>
-              {{#categories}}
-              <p><i class="fa fa-calendar-o fa-lg"></i>Categories: {{category_name}}</p>
-              {{/categories}}
-              <h4 class="ui horizontal header divider">
-                <i class="fa fa-comments-o fa-2x"></i>
-                Translations
-              </h4>
-              {{#translations}}
-              
+            <h1 class="ui header centered">{{english_phrase}}</h1>
+            <h2 class="ui header centered">{{explanation}}</h2>
+            {{#categories}}
+            <p><i class="fa fa-calendar-o fa-lg"></i>Categories: {{category_name}}</p>
+            {{/categories}}
+            <h4 class="ui horizontal header divider">
+              <i class="fa fa-comments-o fa-2x"></i>
+              Translations
+            </h4>
+            {{#translations}}
+            <div id="padded-content" class="ui padded grid four wide column">
+              <div class="four column row">
                 <h5>Language: {{language}}</h5>
-                <p>Translation: {{translation}}</p>
-                <p>Meaning: {{meaning}}</p>
-                <p>Phonetic: {{phonetic}}</p>
-              {{#user}}
-                <p>Author: {{username}}</p>
-              {{/user}}
-              {{/translations}}
+              </div>
+              <div class="four column centered row">
+                <div class="one column">
+                  <p>Translation: {{translation}}</p>
+                </div>
+                <div class="one column">
+                  <p>Phonetic: {{phonetic}}</p>
+                </div>
+              </div>
+              <div class="four column centered row">
+                <h2>Meaning: {{meaning}}</h2>
+              </div>
+              <div class="row">
+                <div class="one right aligned column">
+                  {{#user}}
+                  <p><i class="fa fa-user fa-lg"></i>{{username}}</p>
+                  {{/user}}
+                </div>
+              </div>
+            </div>
+            <div class="ui divider"></div>
           </div>
+            {{/translations}}
         </div>
       </div>
     <div class="actions">
