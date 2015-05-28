@@ -10,5 +10,6 @@ Meowth.Views.AddCard = Backbone.View.extend({
   newCardForm: function(){
     var newCard = new Meowth.Views.NewCard({collection: this.collection});
     newCard.render()
+    this.off()
   }
 })

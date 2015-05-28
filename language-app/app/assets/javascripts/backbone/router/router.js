@@ -5,6 +5,7 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     '': 'index',
     'cards/:id': 'cardShow',
     'categories' : 'viewCategories',
+    'translations': 'viewMyCards',
     'recents': 'index'
   },
 
@@ -25,7 +26,7 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
   },
 
   viewCategories: function(){
-    // clear table body to render new info
+    // clear table body to render new inf
     $('tbody').empty()
     // add table headers
     var tableHeaders = "<th>Category</th>"
@@ -34,5 +35,16 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     var categoryListView = new Meowth.Views.CategoryListView({collection: allCategories, el: $('tbody')});
 
     categoryListView.collection.fetch()
+  },
+
+  viewMyCards: function(){
+    // clear table body to render new info
+    $('tbody').empty()
+    // add table headers
+    var tableHeaders = "<th>English Phrase</th><th>Explanation</th><th>Last Modifried</th>"
+    $('[data-id="table-header"]').html(tableHeaders)
+    translationCollection = translationCollection || new Meowth.Collections.TranslationCollection();
+
+    var translationListView = new Meowth.Views.CardListView({collection: translationCollection, el: $('tbody')});
   }
 })
