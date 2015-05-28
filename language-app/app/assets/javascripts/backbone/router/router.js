@@ -5,7 +5,8 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     '': 'index',
     'cards/:id': 'cardShow',
     'categories' : 'viewCategories',
-    'recents': 'index'
+    'recents': 'index',
+    'categories/:id': 'categoryShow'
   },
 
   index: function(){
@@ -17,6 +18,7 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     recentCollection = recentCollection || new Meowth.Collections.RecentCards();
 
     var cardListView = new Meowth.Views.CardListView({collection: recentCollection, el: $('tbody')});
+    recentCollection.fetch();
   },
 
   cardShow: function(id) {
@@ -34,5 +36,28 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     var categoryListView = new Meowth.Views.CategoryListView({collection: allCategories, el: $('tbody')});
 
     categoryListView.collection.fetch()
+  },
+
+  categoryShow: function(id) {
+    
+    $('tbody').empty()
+    var tableHeaders = "<th>English Phrase</th><th>Explanation</th><th>Last Modifried</th>"
+    $('[data-id="table-header"]').html(tableHeaders)
+
+    var category = allCategories.get(id);
+    var cards = category.get("cards")
+    var categoryCardCollection = new Meowth.Collections.CardsByCategory();
+    var cardsView = new Meowth.Views.CardListView({collection: categoryCardCollection, el: $('tbody')})
+    _.each(cards, function(card) {
+      var c = new Meowth.Models.Card({card})
+      for (var k in card){
+        c.set(k, card[k])        
+      }
+      categoryCardCollection.add(c)
+    })
   }
 })
+
+
+
+
