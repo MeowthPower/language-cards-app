@@ -96,9 +96,12 @@
           <div class="description">  
             <h1 class="ui header centered">{{english_phrase}}</h1>
             <h2 class="ui header centered">{{explanation}}</h2>
+            <p><i class="fa fa-calendar-o fa-lg"></i>Categories:</p>
+            <p>  
             {{#categories}}
-            <p><i class="fa fa-calendar-o fa-lg"></i>Categories: {{category_name}}</p>
+              {{category_name}}, 
             {{/categories}}
+            </p>
             <h4 class="ui horizontal header divider">
               <i class="fa fa-comments-o fa-2x"></i>
               Translations
@@ -162,17 +165,45 @@
                 <input type="hidden" name="card_id" value="{{id}}">
                 <input type="hidden" name="_method" value="put">
                 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-                <button class="ui positive labeled button">
+                <button data-id="add-translation" class="ui positive labeled button">
                   Translate
                 </button>
               </form>
             </div>
         </div>
       </div>
-    <div class="actions">
-    </div>
-
 </script>
+
+
+
+<script type="text/template" data-template="translate-show-template">
+  <!-- <div id="padded-content" class="ui padded grid four wide column"> -->
+              <div class="four column row">
+                <h5>Language: {{language}}</h5>
+              </div>
+              <div class="four column centered row">
+                <div class="one column">
+                  <p>Translation: {{translation}}</p>
+                </div>
+                <div class="one column">
+                  <p>Phonetic: {{phonetic}}</p>
+                </div>
+              </div>
+              <div class="four column centered row">
+                <h2>Meaning: {{meaning}}</h2>
+              </div>
+              <div class="row">
+                <div class="one right aligned column">
+                  {{#user}}
+                  <p><i class="fa fa-user fa-lg"></i>{{username}}</p>
+                  {{/user}}
+                </div>
+              </div>
+            <!-- <div class="ui divider"></div> -->
+            <!-- </div> -->
+</script>
+
+
 
 <script type="text/template" data-template="category-template">
   <td><a href="#{{id}}">{{category_name}}</a></td>

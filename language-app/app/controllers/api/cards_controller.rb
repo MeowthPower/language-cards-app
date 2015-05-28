@@ -75,7 +75,17 @@ module Api
       new_translation = Translation.new({translation: params[:translation], language: params[:language], phonetic: params[:phonetic], meaning: params[:meaning], user_id: params[:user_id], card_id: params[:card_id]})
       new_translation.save
 
-      render json: new_translation.to_json
+
+
+      card = Card.find(params[:card_id])
+      render json: card.to_json( include:{
+        categories: {only: [:category_name]},
+        translations:{
+          include:{
+            user:{only: [:username]}
+          }
+        }
+      })
 
     end
 
