@@ -29,7 +29,7 @@ Meowth.Views.NewCard = Backbone.View.extend({
         english_phrase: $('[name="english_phrase"]').val(),
         explanation: $('[name="explanation"]').val(),
         category_name: $('[name="categories"]').val()      
-      })
+      }, {wait:true})
       this.$el.remove()
     } else {
       this.$el.remove()
