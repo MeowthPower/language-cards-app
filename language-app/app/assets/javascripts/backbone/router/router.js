@@ -17,7 +17,6 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     recentCollection = recentCollection || new Meowth.Collections.RecentCards();
 
     var cardListView = new Meowth.Views.CardListView({collection: recentCollection, el: $('tbody')});
-    cardListView.collection.fetch()  
   },
 
   cardShow: function(id) {

@@ -11,7 +11,7 @@ module Api
             }
           } 
         })
-    end
+    end 
 
     def create
       new_favorite = Favorite.new(favorite_params)
