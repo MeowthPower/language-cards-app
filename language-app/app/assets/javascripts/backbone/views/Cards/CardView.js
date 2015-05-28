@@ -8,7 +8,6 @@ Meowth.Views.CardView = Backbone.View.extend({
 
   render: function(){
     renderObj = {}
-
     renderObj.english_phrase = this.model.attributes.english_phrase
     renderObj.explanation = this.model.attributes.explanation
     renderObj.updated_at = moment(this.model.attributes.updated_at).from(moment()) 
