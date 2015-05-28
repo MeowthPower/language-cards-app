@@ -14,9 +14,7 @@ Meowth.Views.CardListView = Backbone.View.extend({
 
   addOne: function(card){
     var cardView = new Meowth.Views.CardView({model: card});
-    console.log(card)
     cardView.render();
-    // console.log(this.$el)
     this.$el.prepend(cardView.$el)
   }
 })

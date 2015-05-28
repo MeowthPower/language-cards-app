@@ -26,9 +26,9 @@ Meowth.Views.CardShow = Backbone.View.extend({
   render: function(){
     this.$el.html(Mustache.render(this.template, this.model.attributes))
     
-    var collUrl = '/api/cards/' + this.model.get("id") + '/translations'
+    var collUrl = '/api/cards/' + this.model.get("id") + '/user_translations'
 
-    var trCollection = new Meowth.Collections.CardTranslationsCollection()
+    trCollection = new Meowth.Collections.CardTranslationsCollection()
     trCollection.url = collUrl
     var translationCollectionView = new Meowth.Views.TranslationCollectionView({
       collection: trCollection,
@@ -36,6 +36,7 @@ Meowth.Views.CardShow = Backbone.View.extend({
     })
     trCollection.fetch();
   },
+
   addTranslation: function(event) {
     event.preventDefault()
     
@@ -48,14 +49,11 @@ Meowth.Views.CardShow = Backbone.View.extend({
     formDataObject.card_id = $('[name="card_id"]').val()
     formDataObject.user_id = $('[name="user_id"]').val()
 
-    this.model.save(formDataObject, {wait: true})
-    // var newTranslationRendered = Mustache.render(this.translationTemplate, this.model.attributes)
-    // newDiv = $('<div>')
-    // newDiv.html(newTranslationRendered)
-    // this.$el.append(newDiv)
-
-    console.log('I updooted')
+    console.log(formDataObject)
+    trCollection.url = 'api/users/translations'
+    trCollection.create(formDataObject)
   },
+  
   addFavorite: function (event) {
     event.preventDefault()
     console.log('YOURR MAI FAVORIT')
