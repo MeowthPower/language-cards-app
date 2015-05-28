@@ -70,6 +70,26 @@ module Api
       render json: new_card.to_json
     end
 
+
+    def update
+      new_translation = Translation.new({translation: params[:translation], language: params[:language], phonetic: params[:phonetic], meaning: params[:meaning], user_id: params[:user_id], card_id: params[:card_id]})
+      new_translation.save
+
+
+
+      card = Card.find(params[:card_id])
+      render json: card.to_json( include:{
+        categories: {only: [:category_name]},
+        translations:{
+          include:{
+            user:{only: [:username]}
+          }
+        }
+      })
+
+    end
+
+
     def destroy
       #admin only
       card_no_longer = Card.find(params[:id])
@@ -79,7 +99,7 @@ module Api
 
     private
       def card_params
-        params.require(:card).permit(:english_phrase, :explanation, :category_name)
+        params.require(:card).permit(:english_phrase, :explanation, :category_name, :translation, :language, :phonetic, :meaning, :user_id, :card_id)
       end
 
   end
