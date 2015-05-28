@@ -2,6 +2,7 @@
 Rails.application.routes.draw do
 # View routes
   root 'welcome#index'
+  # root 'welcome#phil_test'
 
   resources :users, only: [:new, :create]
 
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
       resources :favorites, except: [:new,:update, :edit, :show]
       resources :translations, except: [:new, :edit, :show]
     end
-    resources :cards, except: [:new, :update, :edit]
+    resources :cards, except: [:new, :edit]
     resources :categories, only: [:index, :show]
     resources :tags, only: [:create, :destroy]
   end

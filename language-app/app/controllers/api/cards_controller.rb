@@ -70,6 +70,28 @@ module Api
       render json: new_card.to_json
     end
 
+
+    def update
+      # THIS METHOD DOES NOT UPDATE A CARD'S ROW/DATA/ATTRIBUTES IN THE DATABASE.
+
+      # creating a new translation with the data the user submitted and linking it to the user_id and card_id
+      new_translation = Translation.new({translation: params[:translation], language: params[:language], phonetic: params[:phonetic], meaning: params[:meaning], user_id: params[:user_id], card_id: params[:card_id]})
+      new_translation.save
+
+      # Returning the card model, along with the updated translation included in the thing
+      card = Card.find(params[:card_id])
+      render json: card.to_json( include:{
+        categories: {only: [:category_name]},
+        translations:{
+          include:{
+            user:{only: [:username]}
+          }
+        }
+      })
+
+    end
+
+
     def destroy
       #admin only
       card_no_longer = Card.find(params[:id])
@@ -79,7 +101,7 @@ module Api
 
     private
       def card_params
-        params.require(:card).permit(:english_phrase, :explanation, :category_name)
+        params.require(:card).permit(:english_phrase, :explanation, :category_name, :translation, :language, :phonetic, :meaning, :user_id, :card_id)
       end
 
   end
