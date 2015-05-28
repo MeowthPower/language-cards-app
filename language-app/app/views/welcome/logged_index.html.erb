@@ -92,7 +92,7 @@
     Card View
     </div>
       <div class="content">
-        <div class="ui piled segment">
+        <div class="ui segment">
           <div class="description">  
             <h1 class="ui header centered">{{english_phrase}}</h1>
             <h2 class="ui header centered">{{explanation}}</h2>
@@ -130,12 +130,44 @@
             <div class="ui divider"></div>
           </div>
             {{/translations}}
+            <div class="ui segment">
+              <form class="ui form">
+                <h1 class="ui dividing header"><i class="fa fa-language fa-lg"></i>Add A Translation</h1>
+                <div class="two fields">
+                  <div class="three wide field">
+                    <label>Language</label>
+                    <select class="ui dropdown" name="language">
+                      <option value="korean">Korean</option>
+                      <option value="russian">Russian</option>
+                      <option value="arabic">Arabic</option>
+                      <option value="spanish">Spanish</option>
+                      <option value="chinese">Chinese</option>
+                      <option value="croatian">Croatian</option>
+                    </select>
+                  </div>
+                  <div class="thirteen wide field">
+                    <label>Translation</label>
+                    <input type="text" name="translation">
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Phonetic</label>
+                  <input type="text" name="phonetic">
+                </div>
+                <div class="field">
+                  <label>Meaning</label>
+                  <input type="text" name="meaning">
+                </div>
+                <input type="hidden" name="user_id" value="<%= @current_user.id %>">
+                <input type="hidden" name="card_id" value="{{id}}">
+                <button class="ui positive labeled button">
+                  Translate
+                </button>
+              </form>
+            </div>
         </div>
       </div>
     <div class="actions">
-      <div class="ui positive right labeled button">
-        Translate
-      </div>
     </div>
 
 </script>
