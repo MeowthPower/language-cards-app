@@ -47,20 +47,17 @@ body {
 }
 
 #padded-content {
-  /*border: 2px solid black;*/
   padding: 10px;
 }
 
 
 .fa-times {
   float: right;
-  color: black;
-  margin-right: 50px;
-  margin-top: 40px;
+  color: grey;
+  text-align: right;
 }
 
 #login {
-  /*margin: 40px 40px 40px 40px;*/
   width: 800px;
   margin: 175px auto;
 }
@@ -68,6 +65,15 @@ body {
 #sign-up {
   max-width: 700px;
   margin: 40px auto;
+}
+
+a.star {
+  color: grey;
+}
+
+
+a.star:hover {
+  color: gold;
 }
 
 @media all and (max-width: 630px) {
