@@ -2,6 +2,7 @@
 Rails.application.routes.draw do
 # View routes
   root 'welcome#index'
+  # root 'welcome#phil_test'
 
   resources :users, only: [:new, :create]
 
