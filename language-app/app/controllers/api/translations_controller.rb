@@ -19,6 +19,7 @@ module Api
     end
 
     def create
+      puts params
       new_translation = Translation.new(translation_params)
       new_translation.save
       render json: new_translation.to_json
@@ -40,7 +41,7 @@ module Api
     private
 
       def translation_params
-        params.require(:translation).permit(:translation, :language, :phonetic, :meaning, :user_id, :card_id)
+        params.permit(:translation, :language, :phonetic, :meaning, :user_id, :card_id)
       end
  
   end
