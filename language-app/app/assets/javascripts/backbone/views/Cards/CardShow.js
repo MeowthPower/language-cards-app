@@ -4,7 +4,8 @@ Meowth.Views.CardShow = Backbone.View.extend({
 
   events: {
     'click .close': 'close',
-    'click [data-id="add-translation"]': 'addTranslation'
+    'click [data-id="add-translation"]': 'addTranslation',
+    'click [data-id="add-favorite"]': 'addFavorite'
   },
 
   initialize: function(){
@@ -26,7 +27,7 @@ Meowth.Views.CardShow = Backbone.View.extend({
     this.$el.modal('setting', 'closable', false)
     this.$el.modal("show")
   },
-  translationTemplate: $('[data-template="translate-show-template"]').text(),
+  // translationTemplate: $('[data-template="translate-show-template"]').text(),
   addTranslation: function(event) {
     event.preventDefault()
     
@@ -46,6 +47,10 @@ Meowth.Views.CardShow = Backbone.View.extend({
     // this.$el.append(newDiv)
 
     console.log('I updooted')
+  },
+  addFavorite: function (event) {
+    event.preventDefault()
+    console.log('YOURR MAI FAVORIT')
   },
 
   close: function(){
