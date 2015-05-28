@@ -66,6 +66,7 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     translationCollection = translationCollection || new Meowth.Collections.TranslationCollection();
 
     var translationListView = new Meowth.Views.CardListView({collection: translationCollection, el: $('tbody')});
+    translationCollection.fetch()
   }
 })
 
