@@ -11,6 +11,7 @@ Meowth.Views.CardShow = Backbone.View.extend({
   template: $('[data-template="card-show-template"]').text(),
 
   render: function() {
+    // this.$el.modal('setting', 'closable', false)
     this.$el.modal("show")
   },
 
