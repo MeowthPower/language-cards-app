@@ -39,7 +39,7 @@ Meowth.Views.CardShow = Backbone.View.extend({
 
   addTranslation: function(event) {
     event.preventDefault()
-    
+
     formDataObject = {}
 
     formDataObject.language = $('[name="language"]').val()
@@ -49,11 +49,11 @@ Meowth.Views.CardShow = Backbone.View.extend({
     formDataObject.card_id = $('[name="card_id"]').val()
     formDataObject.user_id = $('[name="user_id"]').val()
 
-    console.log(formDataObject)
+    $('.ui.form')[0].reset();
     trCollection.url = 'api/users/translations'
     trCollection.create(formDataObject)
   },
-  
+
   addFavorite: function (event) {
     event.preventDefault()
     console.log('YOURR MAI FAVORIT')

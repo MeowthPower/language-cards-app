@@ -19,7 +19,6 @@ module Api
     end
 
     def create
-      puts params
       new_translation = Translation.new(translation_params)
       new_translation.save
       render json: new_translation.to_json
