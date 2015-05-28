@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resource :login, only: [:new, :create, :destroy]
 # API routes
   namespace :api do
+  get '/cards/:card_id/user_translations' => 'translations#userTranslations'
     resource :users , only: [:show] do
       resources :favorites, except: [:new,:update, :edit, :show]
       resources :translations, except: [:new, :edit, :show]
