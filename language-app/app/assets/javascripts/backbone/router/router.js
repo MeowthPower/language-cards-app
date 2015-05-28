@@ -27,7 +27,7 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
   },
 
   viewCategories: function(){
-    // clear table body to render new info
+    // clear table body to render new inf
     $('tbody').empty()
     // add table headers
     var tableHeaders = "<th>Category</th>"
@@ -46,6 +46,6 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
     $('[data-id="table-header"]').html(tableHeaders)
     translationCollection = translationCollection || new Meowth.Collections.TranslationCollection();
 
-    var translationListView = new Meowth.Views.TranslationListView({collection: translationCollection, el: $('tbody')});
+    var translationListView = new Meowth.Views.CardListView({collection: translationCollection, el: $('tbody')});
   }
 })
