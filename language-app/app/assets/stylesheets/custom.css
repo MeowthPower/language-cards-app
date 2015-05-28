@@ -47,7 +47,7 @@ body {
 }
 
 #padded-content {
-  /*border: 2px solid black;*/
+  /*border: 2px solid black;
   padding: 10px;
 }
 
@@ -73,4 +73,4 @@ body {
 @media all and (max-width: 630px) {
   #menu{display: none;}
   #m_btn {display: inline-block;}
-}
+}*/
