@@ -51,6 +51,10 @@ body {
   padding: 10px;
 }
 
+p.title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 40px;
+}
 
 .fa-times {
   float: right;
