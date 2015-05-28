@@ -9,9 +9,11 @@ Meowth.Views.CardShow = Backbone.View.extend({
   },
 
   initialize: function(){
-    this.listenTo(this.model, 'change', this.render);
+    // this.listenTo(this.model, 'change', this.render);
     if (this.model.get("english_phrase")) {
       this.render();    
+      this.$el.modal('setting', 'closable', false)
+      this.$el.modal("show")
     } else {
       this.model.fetch();
     }
@@ -22,12 +24,18 @@ Meowth.Views.CardShow = Backbone.View.extend({
   template: $('[data-template="card-show-template"]').text(),
 
   render: function(){
-    this.model.fetch();
     this.$el.html(Mustache.render(this.template, this.model.attributes))
-    this.$el.modal('setting', 'closable', false)
-    this.$el.modal("show")
+    
+    var collUrl = '/api/cards/' + this.model.get("id") + '/translations'
+
+    var trCollection = new Meowth.Collections.CardTranslationsCollection()
+    trCollection.url = collUrl
+    var translationCollectionView = new Meowth.Views.TranslationCollectionView({
+      collection: trCollection,
+      el: $('[data-id="translation-list"]')
+    })
+    trCollection.fetch();
   },
-  // translationTemplate: $('[data-template="translate-show-template"]').text(),
   addTranslation: function(event) {
     event.preventDefault()
     
@@ -56,9 +64,7 @@ Meowth.Views.CardShow = Backbone.View.extend({
   close: function(){
     var self = this;
     window.setTimeout(function(){
-      console.log(self)
       self.remove();
-      console.log(self)
       window.history.back();
     }, 1000)
   }

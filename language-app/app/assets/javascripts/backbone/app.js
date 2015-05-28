@@ -2,7 +2,8 @@ var Meowth = Meowth || { Models: {}, Collections: {}, Views: {}, Routers: {} };
 
 var recentCollection;
 var allCategories;
-var translationCollection
+var translationCollection;
+var trCollection;
 
 Meowth.initialize = function(){
     // instantiate new recents collection

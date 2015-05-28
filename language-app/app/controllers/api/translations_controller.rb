@@ -1,17 +1,10 @@
 module Api
   class TranslationsController < ApplicationController
     def index
-      all_user_translations = Card.joins(:translations).where(translations: {user_id: current_user[:id]})
+      all_user_translations = Translation.joins(:card).where(card_id: params[:card_id])
+      render json: all_user_translations.to_json()
+    end
 
-      render json: all_user_translations.to_json( include: {
-        categories: {only: [:category_name]},
-        translations: {
-            include: {
-              user: {only: [:username]},
-            }
-          } 
-        })
-    end 
 
     def create
       new_translation = Translation.new(translation_params)
