@@ -128,21 +128,21 @@
               </div>
             </div>
             <div class="ui divider"></div>
-          </div>
             {{/translations}}
+          </div>
             <div class="ui segment">
-              <form class="ui form">
+              <form class="ui form" action="/api/cards/{{id}}" method="POST">
                 <h1 class="ui dividing header"><i class="fa fa-language fa-lg"></i>Add A Translation</h1>
                 <div class="two fields">
                   <div class="three wide field">
                     <label>Language</label>
                     <select class="ui dropdown" name="language">
-                      <option value="korean">Korean</option>
-                      <option value="russian">Russian</option>
-                      <option value="arabic">Arabic</option>
-                      <option value="spanish">Spanish</option>
-                      <option value="chinese">Chinese</option>
-                      <option value="croatian">Croatian</option>
+                      <option value="Korean">Korean</option>
+                      <option value="Russian">Russian</option>
+                      <option value="Arabic">Arabic</option>
+                      <option value="Spanish">Spanish</option>
+                      <option value="Chinese">Chinese</option>
+                      <option value="Croatian">Croatian</option>
                     </select>
                   </div>
                   <div class="thirteen wide field">
@@ -160,6 +160,8 @@
                 </div>
                 <input type="hidden" name="user_id" value="<%= @current_user.id %>">
                 <input type="hidden" name="card_id" value="{{id}}">
+                <input type="hidden" name="_method" value="put">
+                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
                 <button class="ui positive labeled button">
                   Translate
                 </button>
