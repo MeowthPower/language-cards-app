@@ -9,7 +9,16 @@ Meowth.Views.CardShow = Backbone.View.extend({
   },
 
   initialize: function(){
-    // this.listenTo(this.model, 'change', this.render);
+    var self = this;
+    $.ajax({
+      url: 'api/users/favorites'
+    }).done(function(data){
+      var favIds = _.pluck(data, 'id');
+      var card_id = self.model.get('id')
+      if (_.contains(favIds, card_id)){
+      $('.star').css("color", "papayawhip")
+      } 
+    })
     if (this.model.get("english_phrase")) {
       this.render();    
       this.$el.modal('setting', 'closable', false)
@@ -55,8 +64,14 @@ Meowth.Views.CardShow = Backbone.View.extend({
   },
 
   addFavorite: function (event) {
-    event.preventDefault()
-    console.log('YOURR MAI FAVORIT')
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: "api/users/favorites",
+      data: {"card_id": this.model.get("id")}
+    }).done(function(){
+      $('.star').css("color", "papayawhip")
+    })
   },
 
   close: function(){
