@@ -57,6 +57,7 @@ Meowth.Routers.AppRouter = Backbone.Router.extend({
       categoryCardCollection.add(c)
     })
   },
+  
   viewMyCards: function(){
     // clear table body to render new info
     $('tbody').empty()
