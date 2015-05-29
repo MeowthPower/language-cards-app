@@ -1,80 +1,67 @@
-#Languagey Thing Spec
+#TranslateMe
+###A web application by Team Meowth
+Members: [Anna Rankin](http://github.com/annarankin), [Liz Fonseca](http://github.com/lizfonseca), [Colby Somerville](http://github.com/CSomerville), [Phillip Witkin](https://github.com/PhillipWitkin) and [Daniel Tomic](http://github.com/tomdanny)
 
-(Whatever this is called) is a web application that stores commonly-used classroom phrases ("Good morning!", "...what?", "I have no idea", "ARRRGH" etc.) and translations of these phrases into the many languages spoken by those in our class. The application will allow us to add new phrases, save our favorites, and review them like flashcards.
+##Project details for TranslateMe
 
-Our class is full of folks who speak a second language - let's take advantage of that!
+###Check out our development backlog! [Trello Board](https://trello.com/b/ffOr3Vrl/knope-meowth)
 
-##Features:
+###[Wireframes](/wireframes)
 
-1. Basic Site Features
-  - Phrases in the database are displayed as "cards" containing:
-    - The original English phrase,
-    - A description/explanation of the phrase,
-    - Any number of translations in one of the supported languages,
-    - A phonetic version of a translation for character-based scripts or non-romanized alphabets
-    - The usernames of translation contributors
-  - Anyone visiting the site can browse the phrases in our database and see translations (ordered from most recent to oldest).
-  - Site visitors can see cards by "tag", or category.
-  - Site visitors can also browse by language.
-
-2. User-specific Features
-  - Visitors to the site can create user accounts.
-  - Users can log in to the site to unlock more features!
-    - Users can create new phrase cards.
-    - Users can add translations to existing phrase cards.
-    - Users can edit existing translations that are already attached to phrase cards.
-    - Users can save cards to a "favorites" list.
-    - Users can view cards by "favorite" status.
-    - Users can view cards that they have contributed to.
-    - Users can add category tags to existing cards.
-
-3. Administrators
-  - Users can be given admin status (how should we handle this? Backend?).
-  - Admins can delete phrase cards.
-  - _Admins can view a list of all users?_
-  - _Admins can delete user accounts??_
-
-Database Structure
-
-ERD:
-
-<!-- [ERD](/img/LanguageAppERD.png) -->
+###[ERD](/img/LanguageAppERD.png)
 
 
+**TranslateMe** is a single page web application which provides a fun and easy way for native and non-native English speakers with interests in foreign languages to explore translations of colloquial English phrases.
 
-Views Routes:
+Each English phrase is displayed on a unique "card", which contains an explanation of the meaning of that phrase in English, and any number of translations of that phrase into another language. Translations include the phrase in the non-English language's alphabet, a phonetic spelling, and a literal English meaning of that translation.
 
-|     action      |        resource     |      description          |
-| ----------------------------------------------------------       -|
-| GET             |   '/'            | index - view for main app|
-| GET             |   '/login'       | view with login form (to start a new session) or create user form  |
-| DELETE          |   '/login'       | sign out / destroy session |
+The front end application was written in HTML, CSS and JavaScript using the Backbone.js library and consumes a Rails-powered API.
+
+##Features
+
+###User Authentication
+- A Guest can create a username and password
+- A User can sign with their username and password
+
+TranslateMe features user login and authentication. Certain application features are available to guests, but user-specific functions are not accessible without signing in as a user.
+
+###Guest Features
+- A guest can view a list of cards, containing the English phrase, explanation, and when it was created. Any card on the list can be clicked to provide a view of the entire card which, shows all the translations for that phrase, and any category tags associated with that card.
+
+- The card list can be viewed so that the cards are ordered by order of most recently created.
+
+- A guest can view a list of all categories used to tag any of the cards.
+
+- Each category, when clicked, yields a list of cards which are tagged with that category.
+
+###User-Only Features
+While signed in, users can access all guest features as well as the following additional functionality:
+
+- A user can create a new card:
+
+  A new card must contain an English phrase, not already defined on a card, and an explanation of that phrase. It can also contain one or more category tags.
+
+- A user can add a translation to a card:
+  The user selects a language to translate the phrase into and enters in the translation in the language's alphabet, the English pronunciation, and the literal meaning of the phrase.
+
+- A user can "favorite" a card by clicking the star on the card.
+
+- A user can view a list of cards they have selected as favorites
 
 
-API Routes
+##Project details for TranslateMe
 
-|     action      |        resource     |      description          |
-| ----------------------------------------------------------       -|
-| GET             |   '/api/users'      | provides all information for a user (all information for all cards the user contributed to)|
-| POST            |   '/api/users'      | send a new user to the server|
-|                 |                     |                     |
-| GET             |   '/api/users/favorites' | serves information for all cards the user selected as favorites |
-| POST            |   '/api/users/favorites' | user selects a card as a favorite |
-| DELETE          |   '/api/users/favorites' | user "drops" a card from favorites |
-|                 |                         |                   |
-| GET             |   '/api/users/translations' | serves information for all cards for which the user provided a translation |
-| POST            |   '/api/users/translations'  | sends a new translation for a card to the server |
-| PUT/PATCH       |   '/api/users/translations'  | sends a translation changed by the user to the server|
-| ??DELETE        |   '/api/users/translations'  | translation removed from a card |
-|                 |                              |           |
-||||
-| GET             | '/api/cards'    |    provides all information for all cards |
-| POST            | '/api/cards'     |  a new card with a phrase heading is sent to server|
-|  |  |  |
-| GET             | '/api/cards/:id' |  provides information for a specific card (show page)|
-| PUT/PATCH            | 'api/cards/:id' |  adds a category tag to a card |
-| *DELETE (admin only)|   '/api/cards/:id' | admin removes a card |
-|  |  |  |
-||||
-| GET             |  '/api/categories'  |   provides list of all category tags in use|
-| GET             |  '/api/categories/:id'  |  provides all cards which have a given category tag|
+<!-- - Single Page Web application which consumes an api serving json  provided by rails for the main app, but performs server-side rendering for user-auethentication -->
+
+###Data Structure
+
+- Our [ERD](/img/LanguageAppERD.png) contains several many-to-many relationships. Our API relied heavily on ActiveRecord techniques to ensure each route provided correct, relevant, but not excessive information for each call the client-side made to the server. 
+
+###Technologies:
+
+- ####Backbone.js 
+  - Application front-end uses Backbone.js and Underscore.js to create a MV*, as well as for logic and iteration related to DOM manipulation.
+  - File structure - Our JavaScript files are separated and namespaced to organize various Backbone components. Each model, collection, router and view are defined in separate files and organized within distinct folders.
+
+- ####Moment.js
+  - Client-side JavaScript library used to format times and render modified times as a nicely displayed "time from now".
