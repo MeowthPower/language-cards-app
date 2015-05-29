@@ -1,17 +1,17 @@
 #TranslateMe
 ###A web application by Team Meowth
-Members: [Anna Rankin]('http://github.com/annarankin/'), [Liz Fonseca]('http://github.com/lizfonseca'), [Colby Somerville]('http://github.com/CSomerville'), [Phillip Witkin](https://github.com/PhillipWitkin) and [Daniel Tomic]('http://github.com/tomdanny')
+Members: [Anna Rankin](http://github.com/annarankin), [Liz Fonseca](http://github.com/lizfonseca), [Colby Somerville](http://github.com/CSomerville), [Phillip Witkin](https://github.com/PhillipWitkin) and [Daniel Tomic](http://github.com/tomdanny)
 
 ##Project details for TranslateMe
 
-###Trello board: https://trello.com/b/ffOr3Vrl/knope-meowth
+###Check out our development backlog! [Trello Board](https://trello.com/b/ffOr3Vrl/knope-meowth)
 
-[Wireframes](/wireframes)
+###[Wireframes](/wireframes)
 
-[ERD](/img/LanguageAppERD.png)
+###[ERD](/img/LanguageAppERD.png)
 
 
-TranslateMe is a single page web application which provides a fun and easy way for native and non-native English speakers with interests in foreign languages to explore translations of colloquial English phrases.
+**TranslateMe** is a single page web application which provides a fun and easy way for native and non-native English speakers with interests in foreign languages to explore translations of colloquial English phrases.
 
 Each English phrase is displayed on a unique "card", which contains an explanation of the meaning of that phrase in English, and any number of translations of that phrase into another language. Translations include the phrase in the non-English language's alphabet, a phonetic spelling, and a literal English meaning of that translation.
 
@@ -51,13 +51,17 @@ While signed in, users can access all guest features as well as the following ad
 
 ##Project details for TranslateMe
 
+<!-- - Single Page Web application which consumes an api serving json  provided by rails for the main app, but performs server-side rendering for user-auethentication -->
+
+###Data Structure
+
+- Our [ERD](/img/LanguageAppERD.png) contains several many-to-many relationships. Our API relied heavily on ActiveRecord techniques to ensure each route provided correct, relevant, but not excessive information for each call the client-side made to the server. 
+
 ###Technologies:
-- Single Page Web application which consumes an api serving json  provided by rails for the main app, but performs server-side rendering for user-auethentication
 
-- ERD indicates many join tables; nested resources relied on ActiveRecord techniques on the server to ensure each api route provided correct and relevent but not excessive information for each client-side call to the server
+- ####Backbone.js 
+  - Application front-end uses Backbone.js and Underscore.js to create a MV*, as well as for logic and iteration related to DOM manipulation.
+  - File structure - Our JavaScript files are separated and namespaced to organize various Backbone components. Each model, collection, router and view are defined in separate files and organized within distinct folders.
 
-- javascript for SPA uses backbone and underscore for logic related to DOM manipulation
-
-- namespaced to organize backbone components,  eg router, each Model, Collection and View given its own js file
-
-- moment.js used to format times
+- ####Moment.js
+  - Client-side JavaScript library used to format times and render modified times as a nicely displayed "time from now".
