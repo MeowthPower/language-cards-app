@@ -1,6 +1,6 @@
 #TranlateMe
 ###a web aplication by Team Meowth
-TranslateMe is a single page web application, consuming a rails powered api, which provides a user interface for a fun and easy way for both non-native Enlgish speakers as well as English speakers with interests in foreign languages to explore colloquial English phrases along with their translation into many foreign languages. Each English phrase is organized on to a unqiue "card", which contains an explanation of the meaning of that phrase in English, and at least one translation of that phrase into another language, which contains a visual reference utilizing that language's native alphabet, a literal English meaning of that translation, and a possibility to represent the translation's English pronunciation with Romanized phonetics.
+TranslateMe is a single page web application which provides a user interface for a fun and easy way for both non-native Enlgish speakers as well as English speakers with interests in foreign languages to explore colloquial English phrases along with their translation into many foreign languages. Each English phrase is organized on to a unqiue "card", which contains an explanation of the meaning of that phrase in English, and at least one translation of that phrase into another language, which contains a visual reference utilizing that language's native alphabet, a literal English meaning of that translation, and a possibility to represent the translation's English pronunciation with Romanized phonetics.
 
 ##Features
 
@@ -41,8 +41,20 @@ Members: Anna Rankin, Liz Fonseca, Colby Somerville, Phillip Witkin and Daniel T
 
 ##Project details for TranslateMe
 
+###Technologies:
+- Single Page Web application which consumes an api serving json  provided by rails for the main app, but performs server-side rendering for user-auethentication
+
+- ERD indicates many join tables; nested resources relied on ActiveRecord techniques on the server to ensure each api route provided correct and relevent but not excessive information for each client-side call to the server
+
+- javascript for SPA uses backbone and underscore for logic related to DOM manipulation
+
+- namespaced to organize backbone components,  eg router, each Model, Collection and View given its own js file
+
+- moment.js used to format times
+
+
 ###Trello board: https://trello.com/b/ffOr3Vrl/knope-meowth
 
 [Wireframes](/wireframes)
 
-[ERD](/img/LanguageAppERD.png)
+[ERD](./img/LanguageAppERD.png)
