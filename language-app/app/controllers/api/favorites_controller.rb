@@ -1,17 +1,25 @@
 module Api
   class FavoritesController < ApplicationController
-    def index
-      # renders all card that meet our parameters
-      favorites = Card.joins(:favorites).where(favorites: {user_id: current_user[:id]})
-      render json: favorites.to_json( include: {
-        categories: {only: [:category_name]},
-        translations: {
-            include: {
-              user: {only: [:username]},
-            }
-          } 
-        })
-    end 
+
+    def index 
+      favorites = Favorite.joins(:user).where(user_id: current_user[:id])
+      render json: favorites.to_json
+    end
+
+
+    # def all_cards
+    #   # renders all card that meet our parameters
+    #   favorites = Card.joins(:favorites).where(favorites: {user_id: current_user[:id]})
+    #   render json: favorites.to_json( include: {
+    #     favorites: {},
+    #     categories: {only: [:category_name]},
+    #     translations: {
+    #         include: {
+    #           user: {only: [:username]},
+    #         }
+    #       } 
+    #     })
+    # end 
 
     def create
       new_favorite = Favorite.new(favorite_params)
