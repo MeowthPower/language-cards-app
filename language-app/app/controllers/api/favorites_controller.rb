@@ -27,7 +27,8 @@ module Api
 
     private
       def favorite_params
-        params.require(:favorite).permit(:user_id, :card_id)
+        params[:user_id] = current_user[:id]
+        params.permit(:user_id, :card_id)
       end
 
   end
