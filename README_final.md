@@ -48,3 +48,16 @@ While signed in, users can access all guest features as well as the following ad
 
 - A user can view a list of cards they have selected as favorites
 
+
+##Project details for TranslateMe
+
+###Technologies:
+- Single Page Web application which consumes an api serving json  provided by rails for the main app, but performs server-side rendering for user-auethentication
+
+- ERD indicates many join tables; nested resources relied on ActiveRecord techniques on the server to ensure each api route provided correct and relevent but not excessive information for each client-side call to the server
+
+- javascript for SPA uses backbone and underscore for logic related to DOM manipulation
+
+- namespaced to organize backbone components,  eg router, each Model, Collection and View given its own js file
+
+- moment.js used to format times
