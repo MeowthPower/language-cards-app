@@ -26,7 +26,7 @@ Meowth.Views.CardShow = Backbone.View.extend({
   render: function(){
     this.$el.html(Mustache.render(this.template, this.model.attributes))
     
-    var collUrl = '/api/cards/' + this.model.get("id") + '/user_translations'
+    var collUrl = '/api/cards/' + this.model.get("id") + '/card_translations'
 
     trCollection = new Meowth.Collections.CardTranslationsCollection()
     trCollection.url = collUrl
