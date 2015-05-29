@@ -15,7 +15,9 @@ module Api
 
     def userTranslations
       all_user_translations = Translation.joins(:card).where(card_id: params[:card_id])
-      render json: all_user_translations.to_json()
+      render json: all_user_translations.to_json(  include: {
+          user: {only: [:username]},
+        })
     end
 
     def create
