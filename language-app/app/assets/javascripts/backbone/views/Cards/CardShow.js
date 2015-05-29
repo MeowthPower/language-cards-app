@@ -9,7 +9,18 @@ Meowth.Views.CardShow = Backbone.View.extend({
   },
 
   initialize: function(){
-    // this.listenTo(this.model, 'change', this.render);
+    var self = this;
+    $.ajax({
+      url: 'api/users/favorites'
+    }).done(function(data){
+      var favIds = _.pluck(data, 'card_id');
+      var card_id = self.model.get('id')
+      if (_.contains(favIds, card_id)){
+        $('.star').css("color", "papayawhip")
+      } else {
+        $('.star').css("color", "grey")
+      }
+    })
     if (this.model.get("english_phrase")) {
       this.render();    
       this.$el.modal('setting', 'closable', false)
@@ -55,8 +66,34 @@ Meowth.Views.CardShow = Backbone.View.extend({
   },
 
   addFavorite: function (event) {
-    event.preventDefault()
-    console.log('YOURR MAI FAVORIT')
+    event.preventDefault();
+    var self = this;
+    $.ajax({
+      url: 'api/users/favorites'
+    }).done(function(data){
+      var favIds = _.pluck(data, 'card_id');
+      var card_id = self.model.get('id')
+      if (_.contains(favIds, card_id)){
+
+        fave = _.findWhere(data, {card_id : card_id})
+        fave_id = fave.id
+
+        $.ajax({
+          method: "DELETE",
+          url: "api/users/favorites/" + fave_id,
+        }).done(function(data){
+          $('.star').css("color", "grey")
+        })
+      } else {
+        $.ajax({
+          method: "POST",
+          url: "api/users/favorites",
+          data: {"card_id": card_id}
+        }).done(function(data){
+          $('.star').css("color", "papayawhip")
+        })
+      }
+    })
   },
 
   close: function(){

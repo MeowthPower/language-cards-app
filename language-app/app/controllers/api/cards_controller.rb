@@ -67,7 +67,14 @@ module Api
         end
 # end loopin' YO
 
-      render json: new_card.to_json
+      render json: new_card.to_json( include:{
+        categories: {only: [:category_name]},
+        translations:{
+          include:{
+            user:{only: [:username]}
+          }
+        }
+      })
     end
 
 

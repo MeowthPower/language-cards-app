@@ -1,9 +1,3 @@
-<!-- <div id= "m_btn" class="ui pointing menu inverted fluid three item">
-  <div class="ui labeled icon button black">
-   <i class="fa fa-list fa-lg"></i>
-   Menu
-  </div>
-</div> -->
 <div id="banner">
   <h2 class="ui center aligned icon header">
     <i class="circular fa fa-globe fa-5x"></i><br />
@@ -90,7 +84,7 @@
 
 <script type="text/template" data-template="card-show-template">
     <div class="header">
-    <a class="star"><i class="fa fa-star fa-lg"></i></a>
+    <a class="star"><i class="fa fa-star fa-lg" data-id="add-favorite"></i></a>
     {{english_phrase}}
     <a class="close"><i class="fa fa-times fa-1x"></i></a>
     </div>
@@ -158,61 +152,33 @@
 
 <script type="text/template" data-template="translation-template">
   <div id="padded-content" class="ui padded grid four wide column">
+
     <div class="four column row">
-      <h5>Language: {{language}}</h5>
+      <h4>Language: {{language}}</h4>
     </div>
     <div class="four column centered row">
-      <div class="one column">
-        <p>Translation: {{translation}}</p>
-      </div>
+      <h2>Translation: {{translation}}</h2>
+    </div>
+    <div class="four column centered row">
       <div class="one column">
         <p>Phonetic: {{phonetic}}</p>
       </div>
-    </div>
-    <div class="four column centered row">
-      <h2>Meaning: {{meaning}}</h2>
+      <div class="one column">
+        <p>Meaning: {{meaning}}</p>
+      </div>
     </div>
     <div class="row">
       <div class="one right aligned column">
-        {{#user}}
-        <p><i class="fa fa-user fa-lg"></i>{{username}}</p>
-        {{/user}}
+        <p><i class="fa fa-user fa-lg"></i>
+          {{#user}}
+            {{username}}
+          {{/user}}
+        </p>
       </div>
     </div>
   </div>
   <div class="ui divider"></div>
-
 </script>
-
-
-<script type="text/template" data-template="translate-show-template">
-  <!-- <div id="padded-content" class="ui padded grid four wide column"> -->
-              <div class="four column row">
-                <h5>Language: {{language}}</h5>
-              </div>
-              <div class="four column centered row">
-                <div class="one column">
-                  <p>Translation: {{translation}}</p>
-                </div>
-                <div class="one column">
-                  <p>Phonetic: {{phonetic}}</p>
-                </div>
-              </div>
-              <div class="four column centered row">
-                <h2>Meaning: {{meaning}}</h2>
-              </div>
-              <div class="row">
-                <div class="one right aligned column">
-                  {{#user}}
-                  <p><i class="fa fa-user fa-lg"></i>{{username}}</p>
-                  {{/user}}
-                </div>
-              </div>
-            <!-- <div class="ui divider"></div> -->
-            <!-- </div> -->
-</script>
-
-
 
 <script type="text/template" data-template="category-template">
   <td><a href="#categories/{{id}}">{{category_name}}</a></td>
